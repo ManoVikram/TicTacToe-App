@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import './screens/homeScreen.dart';
+import './models/boxButton.dart';
 
 class MyApp extends StatefulWidget {
   @override
@@ -10,6 +14,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "Tic Tac Toe",
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primaryColor: Colors.black,
       ),
@@ -21,7 +26,12 @@ class _MyAppState extends State<MyApp> {
 class TicTacToe extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return ChangeNotifierProvider(
+      create: (contxt) => BoxButton(),
+      child: Scaffold(
+        body: HomeScreen(),
+      ),
+    );
   }
 }
 
